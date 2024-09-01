@@ -19,6 +19,8 @@ public class CouponApplication {
 	public void init()
 	{
 		logger.info("started the application and create the bean");
+		
+		logger.info("the 2nd commit");
 	}
 
 }
