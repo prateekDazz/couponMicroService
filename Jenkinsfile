@@ -9,34 +9,21 @@ pipeline
 
     stages
     {
-        stage("compile")
-        {
-
-            steps
-                {
-
-                    sh 'javac src/main/java/com/coupon/coupon/controller/CouponController.java '
-                    sh 'echo "${VERSION_NAME}"'
-                }
+        stage('Build') {
+            steps {
+                sh 'mvn -B -DskipTests clean package'
+            }
         }
-        stage("run")
-        {
-            steps
-            {
-                sh 'echo "Java Run"'
+        stage('Test') {
+            steps {
+                sh 'mvn test'
             }
-             post
-            {
-            success
-            {
-            sh 'echo "build success" '
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
                 }
-            always
-            {
-            sh 'echo "always execute" '
             }
-            }
-            }    
+        } 
 
     }
 }
