@@ -25,19 +25,18 @@ pipeline
             {
                 sh 'echo "Java Run"'
             }
-        }
-
-    }
-
-    post
-    {
-        success
-        {
-            sh 'echo "build success"'
-        }
-        always
-        {
+             post
+            {
+            success
+            {
+            sh 'echo "build success" '
+                }
+            always
+            {
             sh 'echo "always execute" '
-        }
+            }
+            }
+            }    
+
     }
 }
