@@ -23,7 +23,7 @@ pipeline
         {
             steps
             {
-                sh " java Test"
+                sh 'echo Java Run'
             }
         }
 
